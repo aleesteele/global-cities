@@ -1,15 +1,15 @@
 # we-were-always-global
 
-// dev of earth over time
-natural processes 
-  geological processes
-  nat disaster
-  climate change
-  etc
-borders
-colonization
-war
-empire
+// dev of earth over time<br>
+natural processes <br>
+  geological processes<br>
+  nat disaster<br>
+  climate change<br>
+  etc<br>
+borders<br>
+colonization<br>
+war<br>
+empire<br>
 
 // connections
 trade
