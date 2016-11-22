@@ -25,6 +25,8 @@ flow of humans
 capital
   finance
   aid
+transportation
+  flights
 international partnerships
   UN
   World Bank
