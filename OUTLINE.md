@@ -1,10 +1,17 @@
-<head> <style> .hangingindent {
-  padding-left: 22px ;
-}</style>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p {
+    text-indent: 50px;
+}
+</style>
+</head>
 
+<body>
 // dev of earth over time //<br>
 natural processes <br>
-  geological processes<br>
+<p>geological processes</p><br>
   nat disaster<br>
   climate change<br>
   etc<br>
@@ -12,7 +19,7 @@ borders<br>
 colonization<br>
 war<br>
 empire<br>
-religion<br> </head> 
+religion<br> 
 
 // connections // <br>
 trade<br>  
@@ -40,5 +47,6 @@ international partnerships<br>
   etc
 
 
-  
+  </body>
+</html>
   
