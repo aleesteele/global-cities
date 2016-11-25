@@ -12,8 +12,8 @@ natural processes
 <li>religion</li> 
 </ul></li>  
 // connections // <br>
-<ul><li>
-trade  
+<ul>
+<li>trade</li>
 <ul><li>energy (oil, nat gas)</li>
 <li>minerals</li>
 <li>materials</li>
@@ -22,12 +22,12 @@ trade
 <li>immigration</li>
 <li>refugees</li>
 <li>trafficking</li>
-<li>education</li><br></ul></li>
+<li>education</li><br></ul>
 <li>capital</li>
 <ul><li>finance</li>
 <li>aid</li></ul>
-transportation<br>
-- flights<br>
+<li>transportation</li>
+<ul><li>flights</ul></li> 
 <li>international partnerships</li>
 <ul><li>UN</li>
 <li>World Bank</li>
@@ -35,6 +35,6 @@ transportation<br>
 <li>G20</li>
 <li>NAFTA</li>
 <li>OPEC</li>
-- etc
+<li>etc.</li>
 
 </ul></li>
