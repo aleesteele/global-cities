@@ -1,15 +1,18 @@
-
 // dev of earth over time //<br>
+<ul>
+<li>
 natural processes <br>
-- geological processes<br>
-- nat disaster<br>
-- climate change<br>
-- etc<br>
-borders<br>
-colonization<br>
-war<br>
-empire<br>
-religion<br> 
+<ul><li>geological processes</li><br>
+<li>nat disaster</li><br>
+<li>climate change</li><br>
+<li>etc</li>  <br>
+</li>
+<li>borders</li><br>
+<li>colonization</li><br>
+<li>war</li><br>
+<li>empire</li><br>
+<li>religion</li><br> 
+</ul>
 
 // connections // <br>
 trade<br>  
