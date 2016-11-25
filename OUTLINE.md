@@ -1,30 +1,28 @@
 // dev of earth over time //<br>
-<ul>
-<li>
-natural processes <br>
-<ul><li>geological processes</li><br>
-<li>nat disaster</li><br>
-<li>climate change</li><br>
-<li>etc</li>  <br>
-</li>
-<li>borders</li><br>
-<li>colonization</li><br>
-<li>war</li><br>
-<li>empire</li><br>
-<li>religion</li><br> 
-</ul>
-
+<ul><li>
+natural processes
+<ul><li>geological processes</li>
+<li>nat disaster</li>
+<li>climate change</li>
+<li>etc</li></ul> 
+<li>borders</li>
+<li>colonization</li>
+<li>war</li>
+<li>empire</li>
+<li>religion</li> 
+</ul></li>  
 // connections // <br>
-trade<br>  
-- energy (oil, nat gas)<br>
-- minerals<br>
-- materials<br>
-- food<br>
-flow of humans<br>
+<ul><li>
+trade  
+<ul><li>energy (oil, nat gas)</li>
+<li>minerals</li>
+<li>materials</li>
+<li>food</li></ul>
+<ul><li>flow of humans<li>
 - immigration<br>
 - refugees<br>
 - trafficking<br>
-- education<br>
+- education<br></ul></li>
 capital<br>
 - finance<br>
 - aid<br>
@@ -39,7 +37,4 @@ international partnerships<br>
 - OPEC<br>
 - etc
 
-
-  </body>
-</html>
-  
+</ul></li>
