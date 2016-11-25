@@ -1,4 +1,4 @@
-// dev of earth over time //<br>
+<h3> // dev of earth over time //</h3><br>
 <ul><li>
 natural processes
 <ul><li>geological processes</li>
@@ -11,7 +11,7 @@ natural processes
 <li>empire</li>
 <li>religion</li> 
 </ul></li>  
-// connections // <br>
+<h3>// connections // </h3><br>
 <ul>
 <li>trade</li>
 <ul><li>energy (oil, nat gas)</li>
@@ -35,6 +35,6 @@ natural processes
 <li>G20</li>
 <li>NAFTA</li>
 <li>OPEC</li>
-<li>etc.</li>
+<li>etc.</li></ul>
 
 </ul></li>
