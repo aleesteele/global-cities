@@ -23,18 +23,18 @@ trade
 <li>refugees</li>
 <li>trafficking</li>
 <li>education</li><br></ul></li>
-capital
-- finance<br>
-- aid<br>
+<li>capital</li>
+<ul><li>finance</li>
+<li>aid</li></ul>
 transportation<br>
 - flights<br>
-international partnerships<br>
-- UN<br>
-- World Bank<br>
-- G8<br>
-- G20<br>
-- NAFTA<br>
-- OPEC<br>
+<li>international partnerships</li>
+<ul><li>UN</li>
+<li>World Bank</li>
+<li>G8</li>
+<li>G20</li>
+<li>NAFTA</li>
+<li>OPEC</li>
 - etc
 
 </ul></li>
