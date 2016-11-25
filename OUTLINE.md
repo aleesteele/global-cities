@@ -27,7 +27,8 @@ natural processes
 <ul><li>finance</li>
 <li>aid</li></ul>
 <li>transportation</li>
-<ul><li>flights</ul></li> 
+<ul><li>flights</li>
+<li>trains</li></ul>
 <li>international partnerships</li>
 <ul><li>UN</li>
 <li>World Bank</li>
