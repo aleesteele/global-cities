@@ -18,12 +18,12 @@ trade
 <li>minerals</li>
 <li>materials</li>
 <li>food</li></ul>
-<ul><li>flow of humans<li>
-- immigration<br>
-- refugees<br>
-- trafficking<br>
-- education<br></ul></li>
-capital<br>
+<ul><li>flow of humans</li>
+<li>immigration</li>
+<li>refugees</li>
+<li>trafficking</li>
+<li>education</li><br></ul></li>
+capital
 - finance<br>
 - aid<br>
 transportation<br>
