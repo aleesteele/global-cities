@@ -1,4 +1,4 @@
-<h3> // dev of earth over time //</h3><br>
+<h3> // dev of earth over time //</h3>
 <ul><li>
 natural processes
 <ul><li>geological processes</li>
@@ -11,7 +11,7 @@ natural processes
 <li>empire</li>
 <li>religion</li> 
 </ul></li>  
-<h3>// connections // </h3><br>
+<h3>// connections // </h3>
 <ul>
 <li>trade</li>
 <ul><li>energy (oil, nat gas)</li>
@@ -22,7 +22,7 @@ natural processes
 <li>immigration</li>
 <li>refugees</li>
 <li>trafficking</li>
-<li>education</li><br></ul>
+<li>education</li></ul>
 <li>capital</li>
 <ul><li>finance</li>
 <li>aid</li></ul>
