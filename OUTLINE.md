@@ -37,5 +37,8 @@ natural processes
 <li>NAFTA</li>
 <li>OPEC</li>
 <li>etc.</li></ul>
+<li>culture</li>
+<ul><li>music</li>
+<li>art</li>
 
 </ul></li>
