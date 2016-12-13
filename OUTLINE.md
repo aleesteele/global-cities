@@ -1,4 +1,4 @@
-<h3> // dev of earth over time //</h3>
+<h3> // development of earth over time //</h3>
 <ul><li>
 natural processes
 <ul><li>geological processes</li>
