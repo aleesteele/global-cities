@@ -1,6 +1,5 @@
 * {
-    margin: 1px;
-    /*background-color: #a1d1a9;*/
+    margin: 0px;
     align-items: center;
     align-content: center;
     font-family: 'Source Sans Pro', sans-serif;
@@ -8,6 +7,9 @@
     color: #ffffff;
 }
 
+/*
+INTRO DIV PAGE
+*/
 .video-background {
   background: #000;
   position: fixed;
@@ -53,6 +55,58 @@
 .vid-info .acronym { display: none; }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+SEARCH STYLING
+*/
+input[type="text"] {
+    width: 100%;
+    font-size: 50px;
+    overflow: auto;
+    padding: 5px;
+    color: #FFFFFF;
+    background-image: url('/public/imgs/static.gif');
+    background-position: center;
+    background-repeat: repeat;
+    border: 0px;
+    /*background-image: url('https://media.giphy.com/media/BfpZpRVA2rVDy/giphy.gif')*/
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    border: 0px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+EVERYTHING ELSE
+*/
 main, body {
     margin: 0;
 }

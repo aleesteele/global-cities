@@ -1,0 +1,8 @@
+var data = [
+    [
+    'seriesA', [ latitude, longitude, magnitude, latitude, longitude, magnitude ]
+    ],
+    [
+    'seriesB', [ latitude, longitude, magnitude, latitude, longitude, magnitude]
+    ]
+];

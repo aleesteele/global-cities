@@ -381,7 +381,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 		} else {
 
 			console.warn( 'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.' );
-			scope.enableZoom = false;
+			scope.enableZoom = true;
 
 		}
 
