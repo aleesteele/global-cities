@@ -7,9 +7,9 @@ app.set('view engine', 'handlebars'); //set engine
 
 app.use("/public", express.static(__dirname + "/public"));
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + "/public/index.html");
+// });
 
 app.get('/', function(req, res) {
     res.render('index', {
@@ -17,9 +17,16 @@ app.get('/', function(req, res) {
     });
 });
 
-app.get('/', (req, res) => {
-    res.render('characters', {
-        layout: 'main',
+app.get('/earth', (req, res) => {
+    res.render('index', {
+        layout: 'main'
+    })
+    
+})
+
+app.get('/credits', (req, res) => {
+    res.render('index', {
+        layout: 'other'
     })
 })
 
