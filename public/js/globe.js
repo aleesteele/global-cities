@@ -65,9 +65,8 @@ DAT.Globe = function(container, opts) {
         w,
         h;
     var mesh,
-        atmosphere,
-        clouds,
-        point;
+        point,
+        cloudMesh;
 
     var overRenderer;
 
@@ -159,11 +158,13 @@ DAT.Globe = function(container, opts) {
         var cloudGeometry = new THREE.SphereGeometry(205, 40, 30);
         var cloudMaterial = new THREE.MeshLambertMaterial({transparent: true, opacity: 0.4});
             cloudMaterial.map = new THREE.TextureLoader().load('/public/imgs/clouds.png');
-        var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
+        cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
         scene.add(cloudMesh);
 
-
-
+        var imagePrefix = "/public/imgs/"
+        var urls = [ 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg' ]
+        var skyBox = new THREE.CubeTextureLoader().setPath(imagePrefix).load(urls);
+        scene.background = skyBox;
 
 
         geometry = new THREE.BoxGeometry(0.75, 0.75, 1);
@@ -392,6 +393,13 @@ DAT.Globe = function(container, opts) {
 
     function animate() {
         requestAnimationFrame(animate);
+
+        // mesh.rotation.x += 0.000;
+        // mesh.rotation.y += 0.0001;
+
+        cloudMesh.rotation.x += 0.000;
+        cloudMesh.rotation.y += 0.002;
+
         render();
     }
 
@@ -401,9 +409,6 @@ DAT.Globe = function(container, opts) {
         rotation.x += (target.x - rotation.x) * 0.1;
         rotation.y += (target.y - rotation.y) * 0.1;
         distance += (distanceTarget - distance) * 0.3;
-
-        // cloudMesh.rotation.x += 0.000;
-        // cloudMesh.rotation.y += 0.002;
 
         camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
         camera.position.y = distance * Math.sin(rotation.y);
@@ -444,12 +449,7 @@ DAT.Globe = function(container, opts) {
         this.points.morphTargetInfluences[index] = leftover;
         this._time = t;
     });
-    //SKYBOX
-    var imagePrefix = "/public/imgs/"
-    var urls = [ 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg' ]
-    var skyBox = new THREE.CubeTextureLoader().setPath(imagePrefix).load(urls);
-    scene.background = skyBox;
-    
+
     this.addData = addData;
     this.createPoints = createPoints;
     this.renderer = renderer;

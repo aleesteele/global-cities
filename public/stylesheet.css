@@ -70,27 +70,46 @@ INTRO DIV PAGE
 /*
 SEARCH STYLING
 */
-input[type="text"] {
+
+#options {
+    z-index: 99;
     width: 100%;
-    font-size: 50px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+textarea[type="text"] {
+    width: 95%;
+    /* height: 50%; */
+    background: transparent;
+    font-size: 100px;
     overflow: auto;
     padding: 5px;
     color: #FFFFFF;
-    background-image: url('/public/imgs/static.gif');
-    background-position: center;
-    background-repeat: repeat;
     border: 0px;
+    /* background-image: url('/public/imgs/static.gif'); */
+    /* background-position: center;
+    background-repeat: repeat;
+    border: 0px; */
     /*background-image: url('https://media.giphy.com/media/BfpZpRVA2rVDy/giphy.gif')*/
 }
 
+textarea[placeholder] {
+    color: #FFFFFF;
+}
+
 button[type="submit"] {
-    width: 100%;
-    background-color: #000000;
-    color: #ffffff;
+    width: 95%;
+    height: 5%;
+    background: transparent;
+    border: 0px;
+    color: #FFFFFF;
     border: 0px;
     font-size: 20px;
     padding: 5px;
 }
+
 
 
 
