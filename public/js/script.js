@@ -1,7 +1,7 @@
 //CLICK EVENTS OF INTRO
 $('.vid-info').click(function() {
-    $('.vid-info').fadeOut("fast", function() {
-        console.log('did this work???')
+    $('#hello').fadeOut("slow", function() {
+        window.location.replace("/");
     })
     // $(e.currentTarget).off('')
 })

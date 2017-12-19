@@ -23,41 +23,41 @@ DAT.Globe = function(container, opts) {
     };
     var imgDir = opts.imgDir || '/public/imgs/'; //lol do we need this
 
-    // var Shaders = {
-    //     'earth': {
-    //         uniforms: {
-    //             'texture': {
-    //                 type: 't',
-    //                 value: null
-    //             }
-    //         },
-    //         vertexShader: [
-    //             'varying vec3 vNormal;',
-    //             'varying vec2 vUv;',
-    //             'void main() {',
-    //             'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-    //             'vNormal = normalize( normalMatrix * normal );',
-    //             'vUv = uv;',
-    //             '}'
-    //         ].join('\n'),
-    //         fragmentShader: [
-    //             'uniform sampler2D texture;',
-    //             'varying vec3 vNormal;',
-    //             'varying vec2 vUv;',
-    //             'void main() {',
-    //             'vec3 diffuse = texture2D( texture, vUv ).xyz;',
-    //             'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) );',
-    //             'vec3 atmosphere = vec3( 1.0, 1.0, 1.0 ) * pow( intensity, 3.0 );',
-    //             'gl_FragColor = vec4( diffuse + atmosphere, 1.0 );',
-    //             '}'
-    //         ].join('\n')
-    //     },
-    //     'atmosphere': {
-    //         uniforms: {},
-    //         vertexShader: ['varying vec3 vNormal;', 'void main() {', 'vNormal = normalize( normalMatrix * normal );', 'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );', '}'].join('\n'),
-    //         fragmentShader: ['varying vec3 vNormal;', 'void main() {', 'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 12.0 );', 'gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;', '}'].join('\n')
-    //     }
-    // };
+    var Shaders = {
+        'earth': {
+            uniforms: {
+                'texture': {
+                    type: 't',
+                    value: null
+                }
+            },
+            vertexShader: [
+                'varying vec3 vNormal;',
+                'varying vec2 vUv;',
+                'void main() {',
+                'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
+                'vNormal = normalize( normalMatrix * normal );',
+                'vUv = uv;',
+                '}'
+            ].join('\n'),
+            fragmentShader: [
+                'uniform sampler2D texture;',
+                'varying vec3 vNormal;',
+                'varying vec2 vUv;',
+                'void main() {',
+                'vec3 diffuse = texture2D( texture, vUv ).xyz;',
+                'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) );',
+                'vec3 atmosphere = vec3( 1.0, 1.0, 1.0 ) * pow( intensity, 3.0 );',
+                'gl_FragColor = vec4( diffuse + atmosphere, 1.0 );',
+                '}'
+            ].join('\n')
+        },
+        'atmosphere': {
+            uniforms: {},
+            vertexShader: ['varying vec3 vNormal;', 'void main() {', 'vNormal = normalize( normalMatrix * normal );', 'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );', '}'].join('\n'),
+            fragmentShader: ['varying vec3 vNormal;', 'void main() {', 'float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 12.0 );', 'gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;', '}'].join('\n')
+        }
+    };
 
     var camera,
         scene,
@@ -116,61 +116,51 @@ DAT.Globe = function(container, opts) {
 
         scene = new THREE.Scene();
 
+        var light = new THREE.AmbientLight( 0xFFFFFF );
+        scene.add( light );
 
+        var geometry = new THREE.SphereGeometry(200, 40, 30);
+        shader = Shaders['earth'];
+        uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
-        //main earth mesh
-        geometry = new THREE.SphereGeometry(200, 40, 30);
-        material = new THREE.MeshPhongMaterial();
-        material.map = new THREE.TextureLoader().load('/public/imgs/finalearthmap.png') //materials map
+        uniforms['texture'].value = THREE.ImageUtils.loadTexture(imgDir+'world.jpg');
+
+        material = new THREE.ShaderMaterial({
+
+          uniforms: uniforms,
+          vertexShader: shader.vertexShader,
+          fragmentShader: shader.fragmentShader
+
+        });
+
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.y = Math.PI;
         scene.add(mesh);
 
-
-        // shader = Shaders['earth'];
-        // uniforms = THREE.UniformsUtils.clone(shader.uniforms);
-        // uniforms['texture'].value = THREE.ImageUtils.loadTexture('/public/imgs/finalearthmap.png');
-        // material = new THREE.ShaderMaterial({
-        //     uniforms: uniforms,
-        //     vertexShader: shader.vertexShader,
-        //     fragmentShader: shader.fragmentShader
-        // });
         // shader = Shaders['atmosphere'];
         // uniforms = THREE.UniformsUtils.clone(shader.uniforms);
         //
         // material = new THREE.ShaderMaterial({
         //
-        //     uniforms: uniforms,
-        //     vertexShader: shader.vertexShader,
-        //     fragmentShader: shader.fragmentShader,
-        //     side: THREE.BackSide,
-        //     blending: THREE.AdditiveBlending,
-        //     transparent: true
+        //       uniforms: uniforms,
+        //       vertexShader: shader.vertexShader,
+        //       fragmentShader: shader.fragmentShader,
+        //       side: THREE.BackSide,
+        //       blending: THREE.AdditiveBlending,
+        //       transparent: true
         //
-        // });
+        //     });
         //
         // mesh = new THREE.Mesh(geometry, material);
-        // mesh.scale.set(1.1, 1.1, 1.1);
+        // mesh.scale.set( 1.1, 1.1, 1.1 );
         // scene.add(mesh);
 
         //CLOUDS
-        var cloudGeometry = new THREE.SphereGeometry(202, 40, 30);
+        var cloudGeometry = new THREE.SphereGeometry(205, 40, 30);
         var cloudMaterial = new THREE.MeshLambertMaterial({transparent: true, opacity: 0.4});
-            cloudMaterial.map = new THREE.TextureLoader().load('/public/imgs/clouds.png')
-        var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial)
+            cloudMaterial.map = new THREE.TextureLoader().load('/public/imgs/clouds.png');
+        var cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
         scene.add(cloudMesh);
-
-
-        //ATMOSPHERE OF EARTH
-        var atmosphereGeometry = new THREE.SphereGeometry(203, 40, 30);
-        var atmosphereMaterial = new THREE.MeshLambertMaterial({color: 0x1C49F4, transparent: true, opacity: 0.02});
-            // atmosphereMaterial.map = new THREE.TextureLoader().load('/public/imgs/clouds.png')
-        var atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial)
-        scene.add(atmosphereMesh);
-
-
-        var light = new THREE.AmbientLight( 0xFFFFFF );
-        scene.add( light );
 
 
 
@@ -180,6 +170,8 @@ DAT.Globe = function(container, opts) {
         geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
 
         point = new THREE.Mesh(geometry);
+
+
 
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(w, h);
@@ -410,6 +402,9 @@ DAT.Globe = function(container, opts) {
         rotation.y += (target.y - rotation.y) * 0.1;
         distance += (distanceTarget - distance) * 0.3;
 
+        // cloudMesh.rotation.x += 0.000;
+        // cloudMesh.rotation.y += 0.002;
+
         camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
         camera.position.y = distance * Math.sin(rotation.y);
         camera.position.z = distance * Math.cos(rotation.x) * Math.cos(rotation.y);
@@ -449,7 +444,12 @@ DAT.Globe = function(container, opts) {
         this.points.morphTargetInfluences[index] = leftover;
         this._time = t;
     });
-
+    //SKYBOX
+    var imagePrefix = "/public/imgs/"
+    var urls = [ 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg' ]
+    var skyBox = new THREE.CubeTextureLoader().setPath(imagePrefix).load(urls);
+    scene.background = skyBox;
+    
     this.addData = addData;
     this.createPoints = createPoints;
     this.renderer = renderer;
@@ -458,9 +458,3 @@ DAT.Globe = function(container, opts) {
     return this;
 
 };
-
-//SKYBOX
-var imagePrefix = "/public/imgs/"
-var urls = [ 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg' ]
-var skyBox = new THREE.CubeTextureLoader().setPath(imagePrefix).load(urls);
-scene.background = skyBox;

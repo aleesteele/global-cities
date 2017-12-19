@@ -11,20 +11,20 @@ app.use("/public", express.static(__dirname + "/public"));
 //     res.sendFile(__dirname + "/public/index.html");
 // });
 
-app.get('/', function(req, res) {
+app.get('/intro', function(req, res) {
     res.render('index', {
         layout: 'intro'
     });
 });
 
-app.get('/earth', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index', {
         layout: 'main'
     })
-    
+
 })
 
-app.get('/credits', (req, res) => {
+app.get('/extra', (req, res) => {
     res.render('index', {
         layout: 'other'
     })
