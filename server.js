@@ -3,30 +3,78 @@ const app = express();
 const http = require('https')
 const querystring = require("querystring")
 const hb = require('express-handlebars');
+const bodyParser = require('body-parser')
+const path = require('path');
+const $ = require('jquery');
+
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+app.engine('handlebars', hb()); //handlebars templenting library
+app.set('view engine', 'handlebars'); //set engine
+app.use("/public", express.static(__dirname + "/public"));
+
+//other things
+const citiesJSON = require(__dirname + '/public/cities.json')
 const secrets = require(__dirname + '/secrets.json')
 const concatCredential = `${secrets.consumerKey}:${secrets.consumerSecret}`
 const encodedCredential = new Buffer(concatCredential).toString("base64");
 
-app.engine('handlebars', hb()); //handlebars templenting library
-app.set('view engine', 'handlebars'); //set engine
-
-app.use("/public", express.static(__dirname + "/public"));
 
 app.get('/intro', function(req, res) {
     res.render('index', {layout: 'intro'});
 });
 
 app.get('/', (req, res) => {
+    console.log('server side for twitter!!!!')
+    console.log('req.body of the whole thhhannng', req.body.submit)
     res.render('index', {layout: 'main'})
+
 })
 
-app.get('/extra', (req, res) => {
+app.get('/test', (req, res) => {
     res.render('index', {layout: 'other'})
 })
 
-// app.get('/auth-tweets.json', (req, res) => {
-//     console.log('req', req)
-//     console.log('res', res)
+app.post('/check-city', (req, res, next) => {
+    var city = req.body.textVal.toLowerCase()
+    console.log('city submitted', city)
+
+    //
+    // cities.map()
+    for (i = 0; i < citiesJSON.length; i++ ) {
+        console.log('inside for loop');
+        if (citiesJSON[i].city === city) {
+            console.log('inside if statement', citiesJSON[i])
+            var latitude = citiesJSON[i].latitude
+            var longitude = citiesJSON[i].longitude
+            console.log('lat: ' + latitude + ' long: ' + longitude)
+
+            Promise.all(
+                $.ajax({
+                type: 'POST',
+                url: '/auth-twitter',
+                data: {
+                    // latitude:
+                }
+                })
+            ).then(results => {
+                // console.log('results after promise: ' + results)
+                // res.json({
+                //     success: true,
+                //     data: JSON.stringify(citiesJSON[i])
+                // })
+            }).catch(err => {
+                console.log('trying not to have an error: ' + err)
+            })
+        }
+        else {
+            res.json({success: false})
+        }
+    }
+})
+
+// http.get('/auth-twitter', (req, res, next) => {
 //     var options = {
 //         host: 'api.twitter.com',
 //         path: '/oauth2/token',
@@ -36,10 +84,10 @@ app.get('/extra', (req, res) => {
 //             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 //         }
 //     };
-//
+// })
+// app.post('/get-city', (req, res) => {
 //     var callback = function(res) {
-//         // var str = '';
-//
+//         var str = '';
 //         res.on('error', (err) => {
 //             console.log('err with twitter api', err)
 //         });
@@ -56,61 +104,27 @@ app.get('/extra', (req, res) => {
 //         });
 //
 //     }
-//
-//     https.request(options, callback).end('grant_type=client_credentials')
-//     function getTweets(bearer) {
-//
-//         var tweetOption = {
-//             host: 'api.twitter.com',
-//             method: 'GET',
-//             path: '/1.1/geo/search.json?count=100&screen_name=TheOnion',
-//             headers: {
-//                 'Authorization': `Bearer ${bearer}`,
-//                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-//             }
-//         };
-//
-//         getTweets = function(res) {
-//             var tweets = '';
-//             res.on('error', (err) => {
-//                 console.log(err)
-//             });
-//
-//             res.on('data', function(chunk) {
-//                 tweets += chunk;
-//             });
-//
-//             res.on('end', function() {
-//                 const tweetsParsed = JSON.parse(tweets)
-//                 //   console.log(tweetsParsed[0].entities)
-//                 filter(tweetsParsed)
-//
-//             });
-//         }
-//
-//         https.request(tweetOption, getTweets).end()
-//
-//     }
-//
-//     function filter(tweetsParsed) {
-//         var filteredResults = []
-//         for (var i = 0; i < tweetsParsed.length; i++) {
-//             if (tweetsParsed[i].entities.urls.length == 1) {
-//                 filteredResults.push(tweetsParsed[i])
-//
-//             }
-//         }
-//         var readyTweets = []
-//         for (var i = 0; i < filteredResults.length; i++) {
-//             var index = filteredResults[i].text.indexOf('https', 0)
-//             var obj = {}
-//             obj.headline = filteredResults[i].text.slice(0, index);
-//             obj.href = filteredResults[i].entities.urls[0].url;
-//             readyTweets[i] = obj
-//         }
-//         response.json(readyTweets)
-//     }
-//
-// });
+// }
+    // app.get('/auth-twitter.json', (req, res) => {
+    //
+    //
+    //
+    //     https.request(options, callback).end('grant_type=client_credentials')
+    //     function getTweets(bearer) {
+    //
+    //     var cityTweets = {
+    //         host: 'api.twitter.com',
+    //         method: 'GET',
+    //         path: '/1.1/geo/search.json',
+    //         headers: {
+    //             'Authorization': `Bearer ${bearer}`,
+    //             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    //         }
+    //     };
+
+
+// app.get("*", (req, res) => {
+//     res.redirect("/welcome/") : res.sendFile(`${__dirname}/index.html`);
+// })
 
 app.listen(8080, () => console.log(`I'm listening on 8080.`))

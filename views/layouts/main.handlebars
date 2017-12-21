@@ -17,13 +17,14 @@
 			height: 100%
 		}
 	</style>
+
 </head>
 
 <body>
 
 	<div id="options">
-		<button type="submit" class="submit">SEARCH FOR IT</button>
-		<textarea type="text" name="" value="Give me a city"></textarea><br>
+		<textarea type="text" name="" value="" placeholder="Give me a city"></textarea><br>
+		<button type="submit" class="submit" name="submit">↵</button>
 	</div>
 
 	<div id="container"></div>
@@ -33,8 +34,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js"></script>
 	<script type="text/javascript" src="/public/js/orbit-controls.js"></script>
 	<script type="text/javascript" src="/public/js/globe.js"></script>
+	<script type="text/javascript" src="/public/js/twitter.js"></script>
 	<!-- <script type="text/javascript" src="/public/js/three-web-gl.js"></script> -->
-	<script type="text/javascript" src="/public/js/api.js"></script>
+	<!-- <script type="text/javascript" src="/public/js/api.js"></script> -->
 	<!-- <script type="text/javascript" src="/public/js/three-extras.js"></script> -->
 	<script type="text/javascript" src="/public/js/tween.js"></script>
 	<script type="text/javascript" src="/public/js/detector.js"></script>
@@ -73,10 +75,11 @@
 						document.body.style.backgroundImage = 'none'; // remove loading
 					}
 				}
+
 			};
 			xhr.send(null);
 
-			
+
 
 		}
 	</script>

@@ -5,6 +5,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     box-sizing: border-box;
     color: #ffffff;
+    background-color: #000000;
 }
 
 /*
@@ -77,17 +78,20 @@ SEARCH STYLING
     position: absolute;
     top: 10px;
     left: 10px;
+    display: inline-block;
 }
 
 textarea[type="text"] {
-    width: 95%;
-    /* height: 50%; */
+    width: 90%;
+    height: 100px;
     background: transparent;
     font-size: 100px;
     overflow: auto;
     padding: 5px;
     color: #FFFFFF;
     border: 0px;
+    display: inline-block;
+    text-transform: uppercase;
     /* background-image: url('/public/imgs/static.gif'); */
     /* background-position: center;
     background-repeat: repeat;
@@ -95,19 +99,32 @@ textarea[type="text"] {
     /*background-image: url('https://media.giphy.com/media/BfpZpRVA2rVDy/giphy.gif')*/
 }
 
-textarea[placeholder] {
-    color: #FFFFFF;
+textarea::-webkit-input-placeholder {
+color: white !important;
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+color: white !important;
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+color: white !important;
+}
+
+textarea:-ms-input-placeholder {
+color: white !important;
 }
 
 button[type="submit"] {
-    width: 95%;
-    height: 5%;
+    /* width: 5%; */
+    /* height: 120px; */
     background: transparent;
     border: 0px;
     color: #FFFFFF;
     border: 0px;
     font-size: 20px;
     padding: 5px;
+    display: inline-block;
 }
 
 

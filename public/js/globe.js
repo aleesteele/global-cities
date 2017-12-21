@@ -146,8 +146,6 @@ DAT.Globe = function(container, opts) {
         // geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
         point = new THREE.Mesh(geometry);
 
-
-
         renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(w, h);
 
@@ -220,39 +218,7 @@ DAT.Globe = function(container, opts) {
                 addPoint(lat, lng, size, color, subgeo);
             }
         }
-        // if (opts.animated) {
-        //     if (this._baseGeometry === undefined) {
-        //         this._baseGeometry = new THREE.Geometry();
-        //         for (i = 0; i < data.length; i += step) {
-        //             lat = data[i];
-        //             lng = data[i + 1];
-        //             //        size = data[i + 2];
-        //             color = colorFnWrapper(data, i);
-        //             size = 0;
-        //             addPoint(lat, lng, size, color, this._baseGeometry);
-        //         }
-        //     }
-        //     if (this._morphTargetId === undefined) {
-        //         this._morphTargetId = 0;
-        //     } else {
-        //         this._morphTargetId += 1;
-        //     }
-        //     opts.name = opts.name || 'morphTarget' + this._morphTargetId;
-        // }
-        // var subgeo = new THREE.Geometry();
-        // for (i = 0; i < data.length; i += step) {
-        //     lat = data[i];
-        //     lng = data[i + 1];
-        //     color = colorFnWrapper(data, i);
-        //     size = data[i + 2];
-        //     size = size * 200;
-        //     addPoint(lat, lng, size, color, subgeo);
-        // }
-        // if (opts.animated) {
-        //     this._baseGeometry.morphTargets.push({'name': opts.name, vertices: subgeo.vertices});
-        // } else {
-        //     this._baseGeometry = subgeo;
-        // }
+
 
     };
 
@@ -261,16 +227,7 @@ DAT.Globe = function(container, opts) {
         scene.add(this.points);
     }
 
-    //ADD ANIMATED BLOCK THING!!
-    // api.addBlock = function(data) {
-    // var block = createBlock(data);
-    //
-    // scene.add(block);
-    // blocks.push(block);
-    //
-    // return this;
-    // }
-
+    // console.log('these are the points', this.points)
     function addPoint(lat, lng, size, color, subgeo) {
 
         var phi = (90 - lat) * Math.PI / 180;
@@ -297,7 +254,7 @@ DAT.Globe = function(container, opts) {
         subgeo.merge(point.geometry, point.matrix);
     }
 
-    function getClicked3DPoint(e) {
+    function getCity(e) {
     e.preventDefault();
 
     mousePosition.x = ((evt.clientX - canvasPosition.left) / canvas.width) * 2 - 1;
@@ -416,6 +373,7 @@ DAT.Globe = function(container, opts) {
 
         camera.lookAt(mesh.position);
 
+        // camera.lookAt(mesh)
         renderer.render(scene, camera);
     }
 
