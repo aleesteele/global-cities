@@ -7,7 +7,6 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const $ = require('jquery');
 
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.engine('handlebars', hb()); //handlebars templenting library
@@ -17,9 +16,9 @@ app.use("/public", express.static(__dirname + "/public"));
 //other things
 const citiesJSON = require(__dirname + '/public/cities.json')
 const secrets = require(__dirname + '/secrets.json')
-const concatCredential = `${secrets.consumerKey}:${secrets.consumerSecret}`
-const encodedCredential = new Buffer(concatCredential).toString("base64");
 
+//for weather API
+const weatherKey = `${secrets.consumerKey}`
 
 app.get('/intro', function(req, res) {
     res.render('index', {layout: 'intro'});
@@ -27,7 +26,7 @@ app.get('/intro', function(req, res) {
 
 app.get('/', (req, res) => {
     console.log('server side for twitter!!!!')
-    console.log('req.body of the whole thhhannng', req.body.submit)
+    // console.log('req.body of the whole thhhannng', req.body.submit)
     res.render('index', {layout: 'main'})
 
 })
@@ -40,91 +39,90 @@ app.post('/check-city', (req, res, next) => {
     var city = req.body.textVal.toLowerCase()
     console.log('city submitted', city)
 
-    //
-    // cities.map()
     for (i = 0; i < citiesJSON.length; i++ ) {
-        console.log('inside for loop');
+        console.log('inside for loop', citiesJSON[i]);
         if (citiesJSON[i].city === city) {
-            console.log('inside if statement', citiesJSON[i])
+            console.log('console.looog', citiesJSON[i])
+            var city = citiesJSON[i].city
             var latitude = citiesJSON[i].latitude
             var longitude = citiesJSON[i].longitude
-            console.log('lat: ' + latitude + ' long: ' + longitude)
-
-            Promise.all(
-                $.ajax({
-                type: 'POST',
-                url: '/auth-twitter',
-                data: {
-                    // latitude:
-                }
-                })
-            ).then(results => {
-                // console.log('results after promise: ' + results)
-                // res.json({
-                //     success: true,
-                //     data: JSON.stringify(citiesJSON[i])
-                // })
-            }).catch(err => {
-                console.log('trying not to have an error: ' + err)
+            console.log('lat: ' + latitude + 'long: ' + longitude)
+            res.json({
+                success: true,
+                data: JSON.stringify(citiesJSON[i]),
+                city: city,
+                latitude: latitude,
+                longitude: longitude
             })
-        }
-        else {
-            res.json({success: false})
+            return;
         }
     }
+    res.json({ error: true })
 })
 
-// http.get('/auth-twitter', (req, res, next) => {
-//     var options = {
-//         host: 'api.twitter.com',
-//         path: '/oauth2/token',
-//         method: 'POST',
-//         headers: {
-//             'Authorization': 'Basic ' + encodedCredential,
-//             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-//         }
-//     };
-// })
-// app.post('/get-city', (req, res) => {
-//     var callback = function(res) {
-//         var str = '';
-//         res.on('error', (err) => {
-//             console.log('err with twitter api', err)
-//         });
+// app.get('/get-weather', (req, res) => {
+//     console.log('inside get-weather - server side ||');
+//     //http://api.worldweatheronline.com/premium/v1/ski.ashx?key=xxxxxxxxxxxxxxxxx&q=47.12,13.13&format=xml
+//     var lat = req.query.lat
+//     var lon = req.query.long
 //
-//         res.on('data', function(chunk) {
+//
+//     const options = {
+//         host: 'api.worldweatheronline.com',
+//         path: '/premium/v1/ski.ashx?key='+ weatherKey + '&q=' + lat + ',' + lon + '&format=xml',
+//         method: 'GET'
+//     }
+//
+//     function fetchWeather(city) {
+//     var cleanWeather = {};
+//     $.ajax({
+//         async: false,
+//         method: 'POST',
+//         dataType: "json",
+//         url: API+'?q=' + city + queryParameters,
+//         success: function(obj) {
+//             console.dir(obj)
+//         },
+//         error: function(e) {alert(e)}
+//     })
+//     // $.getJSON(API, 'q=' + city + queryParameters, function(obj) {
+//     //     console.dir(obj)
+//     //     cleanWeather.T = (obj.main.temp) ? obj.main.temp : defaultT;
+//     //     cleanWeather.S = (obj.wind.speed) ? obj.wind.speed : defaultS;
+//     //     cleanWeather.D = (obj.wind.deg) ? obj.wind.deg + Dcorrection : defaultD;
+//     // })
+//
+//     return cleanWeather
+// }
+//
+//
+//     callback = function(res) {
+//         var str = '';
+//         res.on('error', function(err) {
+//             console.log(err);
+//         })
+//         res.on('data', function (chunk) {
 //             str += chunk;
 //         });
-//
-//         res.on('end', function() {
-//             const parsBearer = JSON.parse(str);
-//             const token = parsBearer.access_token;
-//
-//             getTweets(bearer)
+//         // We have tweets. Now make into JSON and call filter function
+//         res.on('end', function () {
+//             const weather = JSON.parse(str);
+//             getWeather(weather)
 //         });
-//
 //     }
-// }
-    // app.get('/auth-twitter.json', (req, res) => {
-    //
-    //
-    //
-    //     https.request(options, callback).end('grant_type=client_credentials')
-    //     function getTweets(bearer) {
-    //
-    //     var cityTweets = {
-    //         host: 'api.twitter.com',
-    //         method: 'GET',
-    //         path: '/1.1/geo/search.json',
-    //         headers: {
-    //             'Authorization': `Bearer ${bearer}`,
-    //             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-    //         }
-    //     };
-
-
-// app.get("*", (req, res) => {
-//     res.redirect("/welcome/") : res.sendFile(`${__dirname}/index.html`);
+//     http.request(options, callback).end();
+//
+//     function getWeather() {
+//     }
+//
+//     function sendWeatherInfo(weather) {
+//         res.json({
+//             success: true,
+//             data: weather
+//         })
+//     }
+//
 // })
+
 
 app.listen(8080, () => console.log(`I'm listening on 8080.`))

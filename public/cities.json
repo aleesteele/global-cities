@@ -1,22 +1,22 @@
 [
     {
         "city": "london",
-        "latitude": "51.5074",
-        "longitude": "0.1278"
+        "latitude": 51.5074,
+        "longitude": 0.1278
     },
     {
         "city": "seoul",
-        "latitude": "37.5665",
-        "longitude": "126.9780"
+        "latitude": 37.5665,
+        "longitude": 126.9780
     },
     {
         "city": "new york city",
-        "latitude": "37.5665",
-        "longitude": "126.9780"
+        "latitude": 37.5665,
+        "longitude": 126.9780
     },
     {
         "city": "johannesburg",
-        "latitude": "-26.2041",
-        "longitude": "28.0473"
+        "latitude": -26.2041,
+        "longitude": 28.0473
     }
 ]
