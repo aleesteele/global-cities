@@ -12,8 +12,10 @@
 */
 
 var DAT = DAT || {};
+// var raycaster = new THREE.Raycaster();
 
 DAT.Globe = function(container, opts) {
+    // var domEvents = new THREEx.DomEvents(camera, renderer.domElement)
     opts = opts || {};
 
     var colorFn = opts.colorFn || function(x) {
@@ -61,7 +63,10 @@ DAT.Globe = function(container, opts) {
         h;
     var mesh,
         point,
+        city,
         cloudMesh;
+
+    var globe;
 
     var overRenderer;
 
@@ -94,6 +99,7 @@ DAT.Globe = function(container, opts) {
     var padding = 40;
     var PI_HALF = Math.PI / 2;
 
+
     function init() {
 
         container.style.color = '#fff';
@@ -110,35 +116,45 @@ DAT.Globe = function(container, opts) {
 
         scene = new THREE.Scene();
 
-        var light = new THREE.AmbientLight( 0xFFFFFF );
-        scene.add( light );
+        var light = new THREE.AmbientLight(0xFFFFFF);
+        scene.add(light);
 
-        //earth
+        //SUBMIT BUTTON!!!!!!!!!
+        var submit = document.getElementById('submit')
+
+
+        //EARTH!!!!!!!!!
         var geometry = new THREE.SphereGeometry(200, 40, 30);
         shader = Shaders['earth'];
         uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
-        uniforms['texture'].value = THREE.ImageUtils.loadTexture(imgDir+'world.jpg');
+        uniforms['texture'].value = THREE.ImageUtils.loadTexture(imgDir + 'world.jpg');
 
-        material = new THREE.ShaderMaterial({
-          uniforms: uniforms,
-          vertexShader: shader.vertexShader,
-          fragmentShader: shader.fragmentShader
-        });
+        material = new THREE.ShaderMaterial({uniforms: uniforms, vertexShader: shader.vertexShader, fragmentShader: shader.fragmentShader});
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.y = Math.PI;
         scene.add(mesh);
 
-        //CLOUDS
+        //CLOUDS!!!!!!!!!!!!!!
         var cloudGeometry = new THREE.SphereGeometry(205, 40, 30);
         var cloudMaterial = new THREE.MeshLambertMaterial({transparent: true, opacity: 0.4});
-            cloudMaterial.map = new THREE.TextureLoader().load('/public/imgs/clouds.png');
+        cloudMaterial.map = new THREE.TextureLoader().load('/public/imgs/clouds.png');
         cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
         scene.add(cloudMesh);
 
+        // globe = new THREE.Group();
+        // console.log('globe!!!!!!', globe)
+
         var imagePrefix = "/public/imgs/"
-        var urls = [ 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg', 'space.jpg' ]
+        var urls = [
+            'space.jpg',
+            'space.jpg',
+            'space.jpg',
+            'space.jpg',
+            'space.jpg',
+            'space.jpg'
+        ]
         var skyBox = new THREE.CubeTextureLoader().setPath(imagePrefix).load(urls);
         scene.background = skyBox;
 
@@ -154,11 +170,11 @@ DAT.Globe = function(container, opts) {
         container.appendChild(renderer.domElement);
 
         container.addEventListener('mousedown', onMouseDown, false);
-
+        container.addEventListener('mousewheel', onMouseWheel, false);
         container.addEventListener('mousewheel', onMouseWheel, false);
 
+        submit.addEventListener('click', submitClick, false);
         // document.addEventListener('keydown', onDocumentKeyDown, false);
-
         // window.addEventListener('resize', onWindowResize, false);
 
         container.addEventListener('mouseover', function() {
@@ -198,18 +214,20 @@ DAT.Globe = function(container, opts) {
 
         if (!opts.animated) {
             if (this._baseGeometry === undefined) {
-                    this._baseGeometry = new THREE.Geometry();
-                    for (i = 0; i < data.length; i += step) {
-                        lat = data[i];
-                        lng = data[i + 1];
-                        //        size = data[i + 2];
-                        color = colorFnWrapper(data, i);
-                        size = 3;
-                        addPoint(lat, lng, size, color, this._baseGeometry);
-                    }
+                this._baseGeometry = new THREE.Geometry();
+                for (i = 0; i < data.length; i += step) {
+                    // console.log('inside for loop of addData', data.length)
+                    lat = data[i];
+                    lng = data[i + 1];
+                    //        size = data[i + 2];
+                    color = colorFnWrapper(data, i);
+                    size = 3;
+                    addPoint(lat, lng, size, color, this._baseGeometry);
+                }
             }
             var subgeo = new THREE.Geometry();
             for (i = 0; i < data.length; i += step) {
+                // console.log('inside other for loop???', data);
                 lat = data[i];
                 lng = data[i + 1];
                 color = colorFnWrapper(data, i);
@@ -219,11 +237,10 @@ DAT.Globe = function(container, opts) {
             }
         }
 
-
     };
 
     function createPoints() {
-        this.points = new THREE.Mesh(this._baseGeometry, new THREE.MeshBasicMaterial({color: 0xff0000 }));
+        this.points = new THREE.Mesh(this._baseGeometry, new THREE.MeshBasicMaterial({color: 0xff0000}));
         scene.add(this.points);
     }
 
@@ -242,31 +259,82 @@ DAT.Globe = function(container, opts) {
         point.scale.z = Math.max(size, 0.1); // avoid non-invertible matrix
         point.updateMatrix();
 
-        // for (var i = 0; i < point.geometry.faces.length; i++) {
-        //
-        //     point.geometry.faces[i].color = color;
-        //
-        // }
-
         if (point.matrixAutoUpdate) {
             point.updateMatrix();
         }
         subgeo.merge(point.geometry, point.matrix);
     }
 
-    function getCity(e) {
-    e.preventDefault();
+    function submitClick(event) {
+        event.preventDefault();
+        console.log('inside submitClick | globe.js')
 
-    mousePosition.x = ((evt.clientX - canvasPosition.left) / canvas.width) * 2 - 1;
-    mousePosition.y = -((evt.clientY - canvasPosition.top) / canvas.height) * 2 + 1;
+        var submit = document.getElementById('submit')
+        var text = document.getElementById('text').value
+        console.log('text', text)
 
-    var raycaster;
-    rayCaster.setFromCamera(mousePosition, camera);
-    var intersects = rayCaster.intersectObjects(scene.getObjectByName('point').children, true);
+        $.ajax({
+            type: "POST",
+            url: '/check-city',
+            data: {
+                textVal
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log('three.js side | data for lat/long', data)
 
-    if (intersects.length > 0)
-        return intersects[0].point;
-    };
+                var lat = data.latitude;
+                var lng = data.longitude;
+
+                goToPoint(lat, lng);
+                // var phi = latitude * Math.PI / 180;
+                // var theta = (270 - longitude) * Math.PI / 180;
+                // var euler = new THREE.Euler(phi, theta, 0, 'XYZ');
+                //
+                //
+            },
+            error: function(err) {
+                console.log('error thrown!!')
+                return;
+            }
+        })
+
+    }
+
+    function goToPoint(lat, lng) {
+        console.log('inside goToPoint')
+        console.log('lat: ', lat, 'lng: ', lng)
+
+        var phi = (90 - lat) * Math.PI / 180;
+        var theta = (180 - lng) * Math.PI / 180;
+        var euler = new THREE.Euler(phi, theta, 0, 'XYZ');
+
+        var from = {
+            x: camera.position.x,
+            y: camera.position.y,
+            z: distance
+        };
+        console.log('current camera position: ', from)
+
+        var to = {
+            posX: 200 * Math.sin(phi) * Math.cos(theta),
+            posY: 200 * Math.cos(phi),
+            posZ: distance
+        };
+        console.log('need to move to: ', to)
+
+        var tween = new TWEEN.Tween(from)
+            .to(to,600)
+            .easing(TWEEN.Easing.Linear.None)
+            .onUpdate(function () {
+                camera.position.set(this.x, this.y, this.z);
+                camera.lookAt(new THREE.Vector3(0,0,0));
+            })
+            .onComplete(function () {
+                camera.lookAt(new THREE.Vector3(0,0,0));
+            })
+            .start();
+    }
 
     function onMouseDown(event) {
         event.preventDefault();
@@ -299,6 +367,9 @@ DAT.Globe = function(container, opts) {
         target.y = target.y < -PI_HALF
             ? -PI_HALF
             : target.y;
+
+        console.log('target.x: ', target.x)
+        console.log('target.x: ', target.y);
     }
 
     function onMouseUp(event) {
@@ -322,24 +393,11 @@ DAT.Globe = function(container, opts) {
         return false;
     }
 
-    // function onDocumentKeyDown(event) {
-    //     switch (event.keyCode) {
-    //         case 38:
-    //             zoom(100);
-    //             event.preventDefault();
-    //             break;
-    //         case 40:
-    //             zoom(-100);
-    //             event.preventDefault();
-    //             break;
-    //     }
+    // function onWindowResize(event) {
+    //     camera.aspect = container.offsetWidth / container.offsetHeight;
+    //     camera.updateProjectionMatrix();
+    //     renderer.setSize(container.offsetWidth, container.offsetHeight);
     // }
-
-    function onWindowResize(event) {
-        camera.aspect = container.offsetWidth / container.offsetHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.offsetWidth, container.offsetHeight);
-    }
 
     function zoom(delta) {
         distanceTarget -= delta;
@@ -353,27 +411,32 @@ DAT.Globe = function(container, opts) {
 
     function animate() {
         requestAnimationFrame(animate);
-
-        cloudMesh.rotation.x += 0.001;
+        // points.rotation.x += 
+        cloudMesh.rotation.x += 0.000;
         cloudMesh.rotation.y += 0.001;
-
         render();
     }
 
     function render() {
         zoom(curZoomSpeed);
+        // console.log('zoom(curZoomSpeed) :' z)
 
         rotation.x += (target.x - rotation.x) * 0.1;
         rotation.y += (target.y - rotation.y) * 0.1;
         distance += (distanceTarget - distance) * 0.3;
+        // console.log('rotation.x: ', rotation.x);
+        // console.log('rotation.y: ', rotation.y);
 
         camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
         camera.position.y = distance * Math.sin(rotation.y);
         camera.position.z = distance * Math.cos(rotation.x) * Math.cos(rotation.y);
 
+        // console.log('camera.position.x: ', camera.position.x);
+        // console.log('camera.position.y: ', camera.position.y);
+        // console.log('camera.position.z: ', camera.position.z);
+        TWEEN.update();
         camera.lookAt(mesh.position);
 
-        // camera.lookAt(mesh)
         renderer.render(scene, camera);
     }
 

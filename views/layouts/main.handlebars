@@ -7,6 +7,7 @@
 	<!-- <link rel="script" href="/public/three.js"> -->
 	<title>Global Feelings</title>
 	<link rel="stylesheet" href="/public/stylesheet.css">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<style>
 		body {
 			margin: 0;
@@ -21,15 +22,20 @@
 </head>
 
 <body>
+	<div id="mood">
+	</div>
 
 	<div id="options">
-		<textarea type="text" name="" value="" placeholder="Give me a city"></textarea><br>
-		<button type="submit" class="submit" name="submit">↵</button>
+		<textarea type="text" name="" value="" placeholder="Give me a city" id="text"></textarea><br>
+		<button type="submit" class="submit" name="submit" id="submit">↵</button>
 	</div>
 
 	<div id="weather">
-		<div class='title'>Testing stuff</div>
-		<div class='weather'>34 degrees</div>
+		<div class='sunrise'></div>
+		<div class='sunset'></div>
+		<div class='moonrise'></div>
+		<div class='moonset'></div>
+
 	</div>
 
 	<div id="container"></div>
@@ -40,6 +46,7 @@
 	<script type="text/javascript" src="/public/js/orbit-controls.js"></script>
 	<script type="text/javascript" src="/public/js/globe.js"></script>
 	<script type="text/javascript" src="/public/js/api.js"></script>
+	<!-- <script src='threex.domevents.js'></script> -->
 	<!-- <script type="text/javascript" src="/public/js/three-web-gl.js"></script> -->
 	<!-- <script type="text/javascript" src="/public/js/api.js"></script> -->
 	<!-- <script type="text/javascript" src="/public/js/three-extras.js"></script> -->

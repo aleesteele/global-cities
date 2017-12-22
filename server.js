@@ -40,16 +40,14 @@ app.post('/check-city', (req, res, next) => {
     console.log('city submitted', city)
 
     for (i = 0; i < citiesJSON.length; i++ ) {
-        console.log('inside for loop', citiesJSON[i]);
         if (citiesJSON[i].city === city) {
-            console.log('console.looog', citiesJSON[i])
+            console.log('inside if loop, these are the ciites: ', citiesJSON[i])
             var city = citiesJSON[i].city
             var latitude = citiesJSON[i].latitude
             var longitude = citiesJSON[i].longitude
             console.log('lat: ' + latitude + 'long: ' + longitude)
             res.json({
                 success: true,
-                data: JSON.stringify(citiesJSON[i]),
                 city: city,
                 latitude: latitude,
                 longitude: longitude

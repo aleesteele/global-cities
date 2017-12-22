@@ -2,7 +2,7 @@
     margin: 0px;
     align-items: center;
     align-content: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Oswald', sans-serif;
     box-sizing: border-box;
     color: #ffffff;
     background-color: #000000;
@@ -79,11 +79,12 @@ SEARCH STYLING
     top: 10px;
     left: 10px;
     display: inline-block;
+    background: transparent
 }
 
 textarea[type="text"] {
     width: 90%;
-    height: 100px;
+    height: 140px;
     background: transparent;
     font-size: 100px;
     overflow: auto;
@@ -132,6 +133,62 @@ button[type="submit"] {
 
 
 
+/*
+WEATHER STUFF
+*/
+#weather {
+    position: absolute;
+    background: transparent;
+    top: 200px;
+    left: 20px;
+    z-index: 99;
+    text-transform: uppercase;
+}
+
+.sunrise {
+    color: #ddbc82;
+    background: transparent;
+}
+
+.sunset {
+    color: #ff4800;
+    background: transparent;
+}
+
+.moonrise {
+    color: #81b2e2;
+    background: transparent;
+}
+
+.moonset {
+    color: #944fdd;
+    background: transparent;
+}
+
+.sunrise:hover {
+    color: #b79150;
+}
+
+.sunset:hover {
+    color: #d13a04;
+}
+
+.moonrise:hover {
+    color: #598bba;
+}
+
+.moonset:hover {
+    color: #7637ba;
+}
+
+#mood {
+    width: 1000px;
+    height: 1000px;
+    top: 0px;
+    left: 0px;
+    z-index: 10000;
+    opacity: 0.3;
+}
 
 
 
