@@ -314,14 +314,14 @@ DAT.Globe = function(container, opts) {
             y: camera.position.y,
             z: distance
         };
-        console.log('current camera position: ', from)
+        // console.log('current camera position: ', from)
 
         var to = {
             posX: 200 * Math.sin(phi) * Math.cos(theta),
             posY: 200 * Math.cos(phi),
             posZ: distance
         };
-        console.log('need to move to: ', to)
+        // console.log('need to move to: ', to)
 
         var tween = new TWEEN.Tween(from)
             .to(to,600)
@@ -334,6 +334,7 @@ DAT.Globe = function(container, opts) {
                 camera.lookAt(new THREE.Vector3(0,0,0));
             })
             .start();
+
     }
 
     function onMouseDown(event) {
@@ -368,8 +369,8 @@ DAT.Globe = function(container, opts) {
             ? -PI_HALF
             : target.y;
 
-        console.log('target.x: ', target.x)
-        console.log('target.x: ', target.y);
+        // console.log('target.x: ', target.x)
+        // console.log('target.x: ', target.y);
     }
 
     function onMouseUp(event) {
@@ -411,7 +412,6 @@ DAT.Globe = function(container, opts) {
 
     function animate() {
         requestAnimationFrame(animate);
-        // points.rotation.x += 
         cloudMesh.rotation.x += 0.000;
         cloudMesh.rotation.y += 0.001;
         render();
@@ -434,7 +434,7 @@ DAT.Globe = function(container, opts) {
         // console.log('camera.position.x: ', camera.position.x);
         // console.log('camera.position.y: ', camera.position.y);
         // console.log('camera.position.z: ', camera.position.z);
-        TWEEN.update();
+        // TWEEN.update();
         camera.lookAt(mesh.position);
 
         renderer.render(scene, camera);
@@ -446,7 +446,7 @@ DAT.Globe = function(container, opts) {
     this.createPoints = createPoints;
     this.renderer = renderer;
     this.scene = scene;
-
+    
     return this;
 
 };

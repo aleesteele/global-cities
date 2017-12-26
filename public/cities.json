@@ -2,91 +2,385 @@
     {
         "city": "london",
         "latitude": 51.5074,
-        "longitude": 0.1278
+        "longitude": 0.1278,
+        "population": "8,788,000"
     },
     {
         "city": "seoul",
         "latitude": 37.5665,
-        "longitude": 126.9780
+        "longitude": 126.9780,
+        "population": "9,860,000"
     },
     {
         "city": "new york city",
         "latitude": 40.7128,
-        "longitude": -74.0060
+        "longitude": -74.0060,
+        "population": "8,538,000"
     },
     {
         "city": "johannesburg",
         "latitude": -26.2041,
-        "longitude": 28.0473
+        "longitude": 28.0473,
+        "population": "957,441"
     },
     {
         "city": "santiago",
         "latitude": -33.4474,
-        "longitude": -70.6736
+        "longitude": -70.6736,
+        "population": "5,150,000"
     },
     {
         "city": "beijing",
         "latitude": 39.9138,
-        "longitude": 116.3636
+        "longitude": 116.3636,
+        "population": "21,500,000"
     },
     {
         "city": "hong kong",
         "latitude": 22.2855,
-        "longitude": 114.1576
+        "longitude": 114.1576,
+        "population": "7,347,000"
     },
     {
         "city": "caracas",
         "latitude": 10.5000,
-        "longitude": -66.91666
+        "longitude": -66.91666,
+        "population": "2,082,000"
     },
     {
         "city": "toronto",
         "latitude": 43.6539,
-        "longitude": -79.3842
+        "longitude": -79.3842,
+        "population": "2,809,000"
     },
     {
         "city": "moscow",
         "latitude": 55.7512,
-        "longitude": 37.6184
+        "longitude": 37.6184,
+        "population": "11,920,000"
     },
     {
         "city": "sao paulo",
         "latitude": -23.5337,
-        "longitude": -46.6252
+        "longitude": -46.6252,
+        "population": "12,040,000"
     },
     {
         "city": "los angeles",
         "latitude": 34.052235,
-        "longitude": -118.243683
+        "longitude": -118.243683,
+        "population": "3,976,000"
     },
     {
         "city": "istanbul",
         "latitude": 41.015137,
-        "longitude": 28.979530
+        "longitude": 28.979530,
+        "population": "14,800,000"
     },
     {
         "city": "berlin",
         "latitude": 52.5200,
-        "longitude": 13.4050
+        "longitude": 13.4050,
+        "population": "3,470,000"
     },
     {
         "city": "delhi",
         "latitude": 28.7041,
-        "longitude": 77.1025
+        "longitude": 77.1025,
+        "population": "18,980,000"
     },
     {
         "city": "nairobi",
         "latitude": -1.2931,
-        "longitude": 36.8219
+        "longitude": 36.8219,
+        "population": "3,138,000"
     },
     {
         "city": "cairo",
         "latitude": 30.0444,
-        "longitude": 31.2357
+        "longitude": 31.2357,
+        "population": "9,500,000"
     },
     {
         "city": "accra",
         "latitude": 5.6037,
-        "longitude": -0.1870
+        "longitude": -0.1870,
+        "population": "1,594,000"
+    },
+    {
+        "city": "bangkok",
+        "latitude": 13.7563,
+        "longitude": 100.5018,
+        "population": "8,281,000"
+    },
+    {
+        "city": "athens",
+        "latitude": 37.9838,
+        "longitude": 23.7275,
+        "population": "664,046"
+    },
+    {
+        "city": "amsterdam",
+        "latitude": 52.3702,
+        "longitude": 4.8952,
+        "population": "821,752"
+    },
+    {
+        "city": "barcelona",
+        "latitude": 41.3851,
+        "longitude": 2.1734,
+        "population": "1,609,000"
+    },
+    {
+        "city": "bogota",
+        "latitude": 4.7110,
+        "longitude": -74.0721,
+        "population": "8,081,000"
+    },
+    {
+        "city": "brussels",
+        "latitude": 50.8503,
+        "longitude": 4.3517,
+        "population": "1,139,000"
+    },
+    {
+        "city": "buenos aires",
+        "latitude": 34.6037,
+        "longitude": 58.3816,
+        "population": "2,891,000"
+    },
+    {
+        "city": "chicago",
+        "latitude": 41.8781,
+        "longitude": -87.6298,
+        "population": "2,705,000"
+    },
+    {
+        "city": "copenhagen",
+        "latitude": 55.6761,
+        "longitude": 12.5683,
+        "population": "583,525"
+    },
+    {
+        "city": "dhaka",
+        "latitude": 23.8103,
+        "longitude": 90.4125,
+        "population": "14,400,000"
+    },
+    {
+        "city": "dubai",
+        "latitude": 25.2048,
+        "longitude": 55.2708,
+        "population": "2,885,000"
+    },
+    {
+        "city": "dublin",
+        "latitude": 53.3498,
+        "longitude": 6.2603,
+        "population": "567,612"
+    },
+    {
+        "city": "geneva",
+        "latitude": 46.2044,
+        "longitude": 6.1432,
+        "population": "194,565"
+    },
+    {
+        "city": "guangzhou",
+        "latitude": 23.1291,
+        "longitude": 113.2644,
+        "population": "14,040,000"
+    },
+    {
+        "city": "hanoi",
+        "latitude": 21.0278,
+        "longitude": 105.8342,
+        "population": "7,588,000"
+    },
+    {
+        "city": "helsinki",
+        "latitude": 60.1699,
+        "longitude": 24.9384,
+        "population": "616,690"
+    },
+    {
+        "city": "ho chi minh city",
+        "latitude": 10.8231,
+        "longitude": 106.6297,
+        "population": "8,426,000"
+    },
+    {
+        "city": "houston",
+        "latitude": 29.7604,
+        "longitude": -95.3698,
+        "population": "2,303,000"
+    },
+    {
+        "city": "auckland",
+        "latitude": -36.8485,
+        "longitude": 174.7633,
+        "population": "1,377,000"
+    },
+    {
+        "city": "jakarta",
+        "latitude": -6.1751,
+        "longitude": 106.8650,
+        "population": "9,608,000"
+    },
+    {
+        "city": "jerusalem",
+        "latitude": 31.7683,
+        "longitude": 35.2137,
+        "population": "857,752"
+    },
+    {
+        "city": "karachi",
+        "latitude": 25.0700,
+        "longitude": 67.2848,
+        "population": "21,200,000"
+    },
+    {
+        "city": "kolkata",
+        "latitude": 22.5726,
+        "longitude": 88.3639,
+        "population": "4,497,000"
+    },
+    {
+        "city": "lagos",
+        "latitude": 6.5244,
+        "longitude": 3.3792,
+        "population": "21,000,000"
+    },
+    {
+        "city": "lima",
+        "latitude": -12.0464,
+        "longitude": -77.0428,
+        "population": "8,473,000"
+    },
+    {
+        "city": "lisbon",
+        "latitude": 38.7223,
+        "longitude": -9.1393,
+        "population": "506,892"
+    },
+    {
+        "city": "madrid",
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "population": "3,166,000"
+    },
+    {
+        "city": "manila",
+        "latitude": 14.5995,
+        "longitude": 120.9842,
+        "population": "1,780,000"
+    },
+    {
+        "city": "mexico city",
+        "latitude": 19.4326,
+        "longitude": -99.1332,
+        "population": "8,851,000"
+    },
+    {
+        "city": "mumbai",
+        "latitude": 19.0760,
+        "longitude": 72.8777,
+        "population": "18,410,000"
+    },
+    {
+        "city": "osaka",
+        "latitude": 34.6937,
+        "longitude": 135.5022,
+        "population": "2,691,000"
+    },
+    {
+        "city": "paris",
+        "latitude": 48.8566,
+        "longitude": 2.3522,
+        "population": "2,244,000"
+    },
+    {
+        "city": "rio de janeiro",
+        "latitude": -22.9068,
+        "longitude": -43.1729,
+        "population": "6,320,000"
+    },
+    {
+        "city": "rome",
+        "latitude": 41.9028,
+        "longitude": 12.4964,
+        "population": "2,868,000"
+    },
+    {
+        "city": "san francisco",
+        "latitude": 37.7749,
+        "longitude": -122.4194,
+        "population": "864,816"
+    },
+    {
+        "city": "shanghai",
+        "latitude": 31.2304,
+        "longitude": 121.4737,
+        "population": "24,150,000"
+    },
+    {
+        "city": "shenzhen",
+        "latitude": 22.5431,
+        "longitude": 114.0579,
+        "population": "11,910,000"
+    },
+    {
+        "city": "singapore",
+        "latitude": 1.3521,
+        "longitude": 103.8198,
+        "population": "5,607,000"
+    },
+    {
+        "city": "st. petersburg",
+        "latitude": 59.9343,
+        "longitude": 30.3351,
+        "population": "4,991,000"
+    },
+    {
+        "city": "stockholm",
+        "latitude": 59.3293,
+        "longitude": 18.0686,
+        "population": "789,024"
+    },
+    {
+        "city": "sydney",
+        "latitude": -33.8688,
+        "longitude": 151.2093,
+        "population": "4,029,000"
+    },
+    {
+        "city": "taipei",
+        "latitude": 25.0330,
+        "longitude": 121.5654,
+        "population": "2,705,000"
+    },
+    {
+        "city": "tokyo",
+        "latitude": 35.6895,
+        "longitude": 139.6917,
+        "population": "9,273,000"
+    },
+    {
+        "city": "vancouver",
+        "latitude": 49.2827,
+        "longitude": -123.1207,
+        "population": "647,540"
+    },
+    {
+        "city": "kinshasa",
+        "latitude": -4.4419,
+        "longitude": 15.2663,
+        "population": "9,464,000"
+    },
+    {
+        "city": "ulaanbaatar",
+        "latitude": 47.8864,
+        "longitude": 106.9057,
+        "population": "1,380,000"
     }
 ]

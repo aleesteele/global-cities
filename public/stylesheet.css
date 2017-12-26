@@ -11,62 +11,88 @@
 /*
 INTRO DIV PAGE
 */
+
 .video-background {
-  background: #000;
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  z-index: -99;
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
 }
 
-.video-foreground,
-.video-background iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.video-foreground, .video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 #vidtop-content {
-	top: 0;
-	color: #fff;
+    top: 0;
+    color: #fff;
 }
 
-.vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
+.vid-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 33%;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 1rem;
+}
+
 .vid-info h1 {
     font-size: 4rem;
     font-weight: 700;
     margin-top: 0;
     line-height: 1.2;
 }
-.vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
+
+.vid-info a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    transition: .6s background;
+    border-bottom: none;
+    margin: 1rem auto;
+    text-align: center;
+}
 
 @media (min-aspect-ratio: 16/9) {
-  .video-foreground { height: 300%; top: -100%; }
+    .video-foreground {
+        height: 300%;
+        top: -100%;
+    }
 }
+
 @media (max-aspect-ratio: 16/9) {
-  .video-foreground { width: 300%; left: -100%; }
+    .video-foreground {
+        width: 300%;
+        left: -100%;
+    }
 }
+
 @media all and (max-width: 600px) {
-.vid-info { width: 50%; padding: .5rem; }
-.vid-info h1 { margin-bottom: .2rem; }
+    .vid-info {
+        width: 50%;
+        padding: .5rem;
+    }
+    .vid-info h1 {
+        margin-bottom: .2rem;
+    }
 }
+
 @media all and (max-width: 500px) {
-.vid-info .acronym { display: none; }
+    .vid-info .acronym {
+        display: none;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 SEARCH STYLING
@@ -101,19 +127,21 @@ textarea[type="text"] {
 }
 
 textarea::-webkit-input-placeholder {
-color: white !important;
+    color: white !important;
 }
 
-textarea:-moz-placeholder { /* Firefox 18- */
-color: white !important;
+textarea:-moz-placeholder {
+    /* Firefox 18- */
+    color: white !important;
 }
 
-textarea::-moz-placeholder {  /* Firefox 19+ */
-color: white !important;
+textarea::-moz-placeholder {
+    /* Firefox 19+ */
+    color: white !important;
 }
 
 textarea:-ms-input-placeholder {
-color: white !important;
+    color: white !important;
 }
 
 button[type="submit"] {
@@ -128,84 +156,178 @@ button[type="submit"] {
     display: inline-block;
 }
 
-
-
-
-
-
 /*
 WEATHER STUFF
 */
+
 #weather {
     position: absolute;
     background: transparent;
     top: 200px;
     left: 20px;
+    /* width: 100%;
+    height: 100%; */
     z-index: 99;
     text-transform: uppercase;
 }
 
 .sunrise {
-    color: #ddbc82;
+    /* color: #ddbc82; */
     background: transparent;
+    font-size: 30px;
 }
 
 .sunset {
-    color: #ff4800;
+    /* color: #ff4800; */
     background: transparent;
+    font-size: 30px;
 }
 
 .moonrise {
-    color: #81b2e2;
+    /* color: #81b2e2; */
     background: transparent;
+    font-size: 30px;
 }
 
 .moonset {
-    color: #944fdd;
+    /* color: #944fdd; */
     background: transparent;
+    font-size: 30px;
 }
 
 .sunrise:hover {
-    color: #b79150;
+    /* color: #b79150; */
+    color: #ddbc82;
+    background: transparent;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background: transparent;
 }
 
 .sunset:hover {
-    color: #d13a04;
+    /* color: #d13a04; */
+    color: #ff4800;
+    background: transparent;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background: transparent;
 }
 
 .moonrise:hover {
-    color: #598bba;
+    /* color: #598bba; */
+    color: #81b2e2;
+    background: transparent;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background: transparent;
 }
 
 .moonset:hover {
-    color: #7637ba;
+    /* color: #7637ba; */
+    color: #944fdd;
+    background: transparent;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background: transparent;
 }
 
 #mood {
-    width: 1000px;
-    height: 1000px;
+    width: 5000px;
+    height: 5000px;
     top: 0px;
     left: 0px;
     z-index: 10000;
-    opacity: 0.3;
+    background: transparent;
 }
 
+.population {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    left: 10px;
+    font-size: 90px;
+    z-index: 99;
+    /* margin: 10px; */
+    text-align;
+    left;
+    background: transparent;
+}
 
+.population:hover {
+    color: #87c183;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background: transparent;
+}
 
+.temperature {
+    right: 0px;
+    top: 400px;
+    background: transparent;
+}
 
+.news {
+    background: transparent;
+    max-width: 400px;
+    text-transform: uppercase;
+    text-align: right;
+    position: absolute;
+    font-size: 20px;
+    right: 20px;
+    top: 10px;
+    z-index: 99;
+    max-height:
+}
 
+p, i, h2, h1 {
+    background: transparent;
+}
 
+p:hover, i:hover {
+    background: transparent;
+    color: #ede889;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
 
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
 
 /*
 EVERYTHING ELSE
 */
+
 main, body {
     margin: 0;
 }
 
 canvas {
-    width: 100%; height: 100%
+    width: 100%;
+    height: 100%
 }
 
 h1 {
