@@ -120,8 +120,7 @@ DAT.Globe = function(container, opts) {
         scene.add(light);
 
         //SUBMIT BUTTON!!!!!!!!!
-        var submit = document.getElementById('submit')
-
+        var text = document.getElementById('text')
 
         //EARTH!!!!!!!!!
         var geometry = new THREE.SphereGeometry(200, 40, 30);
@@ -173,7 +172,7 @@ DAT.Globe = function(container, opts) {
         container.addEventListener('mousewheel', onMouseWheel, false);
         container.addEventListener('mousewheel', onMouseWheel, false);
 
-        submit.addEventListener('click', submitClick, false);
+        text.addEventListener('keydown', submitText, false);
         // document.addEventListener('keydown', onDocumentKeyDown, false);
         // window.addEventListener('resize', onWindowResize, false);
 
@@ -265,39 +264,45 @@ DAT.Globe = function(container, opts) {
         subgeo.merge(point.geometry, point.matrix);
     }
 
-    function submitClick(event) {
-        event.preventDefault();
+    function submitText(e) {
         console.log('inside submitClick | globe.js')
 
-        var submit = document.getElementById('submit')
-        var text = document.getElementById('text').value
-        console.log('text', text)
+        if (e.keyCode == 13) {
+            event.preventDefault();
+            var text = document.getElementById('text').value
+            console.log('text', text)
 
-        $.ajax({
-            type: "POST",
-            url: '/check-city',
-            data: {
-                textVal
-            },
-            dataType: 'json',
-            success: function(data) {
-                console.log('three.js side | data for lat/long', data)
+            $.ajax({
+                type: "POST",
+                url: '/check-city',
+                data: {
+                    textVal
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log('three.js side | data for lat/long', data)
 
-                var lat = data.latitude;
-                var lng = data.longitude;
+                    var lat = data.latitude;
+                    var lng = data.longitude;
 
-                goToPoint(lat, lng);
-                // var phi = latitude * Math.PI / 180;
-                // var theta = (270 - longitude) * Math.PI / 180;
-                // var euler = new THREE.Euler(phi, theta, 0, 'XYZ');
-                //
-                //
-            },
-            error: function(err) {
-                console.log('error thrown!!')
-                return;
-            }
-        })
+                    goToPoint(lat, lng);
+                    // var phi = latitude * Math.PI / 180;
+                    // var theta = (270 - longitude) * Math.PI / 180;
+                    // var euler = new THREE.Euler(phi, theta, 0, 'XYZ');
+                    //
+                    //
+                },
+                error: function(err) {
+                    console.log('error thrown!!')
+                    return;
+                }
+            })
+        }
+        else {
+
+        }
+
+
 
     }
 
@@ -446,7 +451,7 @@ DAT.Globe = function(container, opts) {
     this.createPoints = createPoints;
     this.renderer = renderer;
     this.scene = scene;
-    
+
     return this;
 
 };

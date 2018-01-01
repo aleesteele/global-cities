@@ -25,17 +25,14 @@ app.get('/intro', function(req, res) {
 });
 
 app.get('/', (req, res) => {
-    console.log('server side for twitter!!!!')
+    console.log('server side for animated globe!!!!')
     // console.log('req.body of the whole thhhannng', req.body.submit)
     res.render('index', {layout: 'main'})
 
 })
 
-app.get('/test', (req, res) => {
-    res.render('index', {layout: 'other'})
-})
-
 app.post('/check-city', (req, res, next) => {
+    console.log('what is req.body: ', req.body)
     var city = req.body.textVal.toLowerCase()
     console.log('city submitted', city)
 
@@ -59,5 +56,6 @@ app.post('/check-city', (req, res, next) => {
     }
     res.json({ error: true })
 })
+
 
 app.listen(8080, () => console.log(`I'm listening on 8080.`))

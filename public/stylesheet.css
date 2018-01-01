@@ -108,7 +108,7 @@ SEARCH STYLING
     background: transparent
 }
 
-textarea[type="text"] {
+input[type="text"] {
     width: 90%;
     height: 140px;
     background: transparent;
