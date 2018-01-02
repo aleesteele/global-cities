@@ -15,10 +15,6 @@ app.use("/public", express.static(__dirname + "/public"));
 
 //other things
 const citiesJSON = require(__dirname + '/public/cities.json')
-const secrets = require(__dirname + '/secrets.json')
-
-//for weather API
-const weatherKey = `${secrets.consumerKey}`
 
 app.get('/intro', function(req, res) {
     res.render('index', {layout: 'intro'});
