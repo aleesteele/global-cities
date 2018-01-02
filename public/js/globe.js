@@ -293,7 +293,7 @@ DAT.Globe = function(container, opts) {
                     //
                 },
                 error: function(err) {
-                    console.log('error thrown!!')
+                    console.log('error!!', err)
                     return;
                 }
             })
