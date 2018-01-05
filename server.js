@@ -9,32 +9,32 @@ const $ = require('jquery');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
-app.engine('handlebars', hb()); //handlebars templenting library
-app.set('view engine', 'handlebars'); //set engine
+app.engine('handlebars', hb());
+app.set('view engine', 'handlebars');
 app.use("/public", express.static(__dirname + "/public"));
 
-//other things
+//OTHER
 const citiesJSON = require(__dirname + '/public/cities.json')
 
-app.get('/intro', function(req, res) {
-    res.render('index', {layout: 'intro'});
-});
-
 app.get('/', (req, res) => {
-    console.log('server side for animated globe!!!!')
-    // console.log('req.body of the whole thhhannng', req.body.submit)
-    res.render('index', {layout: 'main'})
-
+    console.log('res.json: ', res.json)
+    if (res.json.error) {
+        res.render('index', {
+            layout: 'main',
+            error: 'There was an error. Please try again.'
+        })
+    }
+    else {
+        res.render('index', {layout: 'main'})
+    }
 })
 
 app.post('/check-city', (req, res, next) => {
-    console.log('what is req.body: ', req.body)
     var city = req.body.textVal.toLowerCase()
     console.log('city submitted', city)
 
     for (i = 0; i < citiesJSON.length; i++ ) {
         if (citiesJSON[i].city === city) {
-            console.log('inside if loop, these are the ciites: ', citiesJSON[i])
             var city = citiesJSON[i].city
             var latitude = citiesJSON[i].latitude
             var longitude = citiesJSON[i].longitude

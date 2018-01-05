@@ -289,8 +289,6 @@ DAT.Globe = function(container, opts) {
                     // var phi = latitude * Math.PI / 180;
                     // var theta = (270 - longitude) * Math.PI / 180;
                     // var euler = new THREE.Euler(phi, theta, 0, 'XYZ');
-                    //
-                    //
                 },
                 error: function(err) {
                     console.log('error!!', err)

@@ -25,10 +25,15 @@
 	<div id="mood">
 	</div>
 
+	<!-- input -->
 	<div id="options">
-		<input type="text" name="" value="" placeholder="Give me a city" id="text"></input><br>
+		<input type="text" name="city" value="" placeholder="NAME A CITY + PRESS ENTER" id="text"></input><br>
+		{{> error}}
 	</div>
 
+
+
+	<!-- information -->
 	<div class='temperature'></div>
 	<div class='population'></div>
 	<div class='news'></div>
@@ -48,6 +53,7 @@
 	<script type="text/javascript" src="/public/js/orbit-controls.js"></script>
 	<script type="text/javascript" src="/public/js/globe.js"></script>
 	<script type="text/javascript" src="/public/js/api.js"></script>
+	<script type="text/javascript" src="/public/js/script.js"></script>
 	<!-- <script src='threex.domevents.js'></script> -->
 	<!-- <script type="text/javascript" src="/public/js/three-web-gl.js"></script> -->
 	<!-- <script type="text/javascript" src="/public/js/api.js"></script> -->
