@@ -20,7 +20,11 @@ Once given a city, the page loads information onto the page, including populatio
 ![preview-2](https://github.com/aleesteele/global-cities/blob/master/public/imgs/preview-2.png)
 
 ## Improvements
-- Implement redis/csurf middleware.
-- Optimize for mobile use.
-- Tween to city location on search.
+- Redis/csurf
+- Optimize for mobile use
+- Tween to city location on search
 - Integrate more data from APIs (news, weather, social media, etc)
+
+## Contact
+- Email: aleesteele@gmail.com
+- Linkedin: Anne Lee Steele
