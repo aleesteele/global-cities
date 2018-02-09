@@ -11,7 +11,7 @@ An interactive database of the word's global cities. I built this as my final pr
 ## Description
 Using the [Google Chrome Experiment](https://experiments.withgoogle.com/chrome/globe) to plot data points, I combined my love of open data with a 3D rendering of the planet to create an interactive visualization (my first ever!).
 
-*PLEASE NOTE:* This project is optimized for desktop user online. I apologize for the inconvenience that may cauase.
+*PLEASE NOTE:* This project is optimized for desktop user online. I apologize for the inconvenience that may cause.
 
 ## Preview
 When the page loads, users are told to write a city of choice, the press enter.

@@ -25,10 +25,20 @@
 	<div id="mood">
 	</div>
 
+	<div id="modal" class="">
+		Welcome to the interactive database for global cities. Each of those red markers represents a city that you can look up to get weather, population and social media information in real time. <br/>
+		<a href="#" class="js-close-modal">X</a>
+	</div>
+
+	<div id="description">
+		<a href="http://aleesteele.com">A work in progress by Anne Lee Steele, 2018</a>
+	</div>
+
 	<!-- input -->
 	<div id="options">
 		<input type="text" name="city" value="" placeholder="NAME A CITY + PRESS ENTER" id="text"></input><br>
 		{{> error}}
+		<div id="error"></div>
 	</div>
 
 
@@ -54,6 +64,7 @@
 	<script type="text/javascript" src="/public/js/globe.js"></script>
 	<script type="text/javascript" src="/public/js/api.js"></script>
 	<script type="text/javascript" src="/public/js/script.js"></script>
+	<script src="anime.min.js"></script>
 	<!-- <script src='threex.domevents.js'></script> -->
 	<!-- <script type="text/javascript" src="/public/js/three-web-gl.js"></script> -->
 	<!-- <script type="text/javascript" src="/public/js/api.js"></script> -->

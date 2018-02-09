@@ -36,17 +36,54 @@ input[type="text"] {
     text-transform: uppercase;
 }
 
-.error {
+::-webkit-input-placeholder { color: white; }
+::-moz-placeholder {color: white; }
+:-ms-input-placeholder { color: white; }
+:-o-input-placeholder { color: white; }
+
+#error {
+    width: 100%;
+    position: absolute;
     background: transparent;
     color: #FFFFFF;
-    font-size: 40px;
     z-index: 9999;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+#description {
+    /* text-align: left; */
+    background: transparent;
+    position: absolute;
+    font-size: 10px;
+    left: 10px;
+    top: 0;
+    z-index: 99999;
 }
 
 /*
 HAMBURGER MENU
 */
+#modal {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 250px;
+    height: 170px;
+    text-align: center;
+    z-index: 9999999;
+    padding: 10px;
+    border: 1px black solid;
+    border-radius: 20px;
+    overflow: scroll;
+    visibility: visible;
+}
 
+#modal {
 
 
 /*
