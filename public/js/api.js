@@ -25,7 +25,7 @@ text.keydown(function (e) {
             Promise.all([
                 $.ajax({
                     type: "GET",
-                    url: 'https://api.worldweatheronline.com/premium/v1/ski.ashx',
+                    url: 'https://api.worldweatheronline.com/premium/v1/weather.ashx',
                     data: {
                         q: data.latitude + ',' + data.longitude,
                         key: weatherKey,
@@ -38,23 +38,24 @@ text.keydown(function (e) {
                     error: function(err) {
                         console.log('Getting weather did not work. This is the error: ', err)
                     }
-                }),
-                $.ajax({
-                    type: "GET",
-                    url: 'https://api.worldweatheronline.com/premium/v1/marine.ashx',
-                    data: {
-                        q: data.latitude + ',' + data.longitude,
-                        key: weatherKey,
-                        format: 'json'
-                    },
-                    dataType: "json",
-                    success: function(data){
-                        console.log('Got marine data.')
-                    },
-                    error: function(err) {
-                        console.log('Getting weather did not work. This is the error: ', err)
-                    }
                 })
+                // ,
+                // $.ajax({
+                //     type: "GET",
+                //     url: 'https://api.worldweatheronline.com/premium/v1/marine.ashx',
+                //     data: {
+                //         q: data.latitude + ',' + data.longitude,
+                //         key: weatherKey,
+                //         format: 'json'
+                //     },
+                //     dataType: "json",
+                //     success: function(data){
+                //         console.log('Got marine data.')
+                //     },
+                //     error: function(err) {
+                //         console.log('Getting weather did not work. This is the error: ', err)
+                //     }
+                // })
             ]).then(data => {
                 console.log('results of promises?: ', data)
 
