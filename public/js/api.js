@@ -36,7 +36,7 @@ text.keydown(function(e) {
                         },
                         error: function(err) {
                             console.log('Getting weather did not work. This is the error: ', err)
-                            $(".error").html("There was an error with your input. Try another city!");
+                            $("#error").html("For some reason we couldn't get the weather for this city. Try another one!");
                         }
                     })]).then(data => {
                     // console.log('results of promises?: ', data)
@@ -91,19 +91,19 @@ text.keydown(function(e) {
                         },
                         error: function(err) {
                             console.log('Getting news did not work. This is the error: ', err)
-                            $("#error").html("There was an error with your input. Try another city!");
+                            $("#error").html("For some reason we couldn't find any news about this city. Try another one!");
                         }
                     })
 
                 }).catch(err => {
                     console.log('err with promises: ', err);
-                    $("#error").html("There was an error with your input. Try another city!");
+                    $("#error").html("We couldn't get the information you wanted about this city... Try another one!");
                 })
 
             },
             error: function(err) {
                 console.log('error thrown!!')
-                $("#error").html("There was an error with your input. Try another city!");
+                $("#error").html("Third error: There was an error with your input. Try another city!");
                 throw error;
             }
         })

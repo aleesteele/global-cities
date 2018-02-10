@@ -17,10 +17,11 @@ SEARCH STYLING
     z-index: 99;
     width: 100%;
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 10px;
     display: inline-block;
-    background: transparent
+    background: transparent;
+    margin: 0px;
 }
 
 input[type="text"] {
@@ -63,6 +64,15 @@ input[type="text"] {
     z-index: 99999;
 }
 
+#question {
+    background: transparent;
+    position: absolute;
+    font-size: 20px;
+    right: 10px;
+    top: 0;
+    z-index: 99999;
+    text-decoration: none;
+}
 /*
 HAMBURGER MENU
 */
@@ -81,6 +91,7 @@ HAMBURGER MENU
     border-radius: 20px;
     overflow: scroll;
     visibility: visible;
+    text-decoration: none;
 }
 
 
